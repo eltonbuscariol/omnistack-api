@@ -4,8 +4,10 @@ const cors = require("cors");
 const http = require("http");
 const routes = require("./routes");
 const { setupWebsocket } = require("./websockets");
+require("dotenv/config");
 // const connString = "mongodb+srv://omnistack:270483@elton-3b3tl.mongodb.net/week10?retryWrites=true&w=majority";
-const connString = "mongodb://localhost/week10";
+console.log(process.env.MONGODB_URL);
+const connString = process.env.MONGODB_URL || "mongodb://localhost/week10";
 
 const app = express();
 const server = http.Server(app);
